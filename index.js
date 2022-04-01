@@ -5,6 +5,12 @@ const app = express()
 
 require('./configs/mongodb.config')
 
+const userRoute = require('./routes/user.route')
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/createUser', userRoute);
+
 app.get('/',(req,res)=>{
     res.send("This is Zomato API")
 })
